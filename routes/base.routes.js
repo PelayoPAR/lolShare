@@ -7,7 +7,7 @@ baseRouter.use((req, res, next) => {
 });
 
 baseRouter.get("/", (req, res) => {
-  res.render("home");
+  res.render("index");
 });
 
 module.exports = baseRouter;
