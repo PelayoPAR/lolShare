@@ -6,3 +6,5 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server listening on port http://localhost:${PORT}`);
 });
+
+// adding commits to test that everything is set up as it should
