@@ -8,7 +8,9 @@ password: min 8 char,
 favorites: ["memeid1", "memeid2"...]
 role: [user, admin, premium, guest(viewer)]
 profile-pic: **_ nice to have _**
+
 <!-- with defaults -->
+
 subscribed: (to newsletter)
 }
 
@@ -30,8 +32,16 @@ newsletter **_ nice to have _**
 }
 
 -- API {
-     https://github.com/arifszn/reddit-image-fetcher
-    
+https://github.com/arifszn/reddit-image-fetcher
+
+        https://npm.io/package/reddit-image-fetcher
+
+        https://github.com/arifszn/reddit-image-fetcher
+
+        https://arifszn.com/reddit-image-fetcher/docs/usage
+
+
     command:
      npm i reddit-image-fetcher
+
 }

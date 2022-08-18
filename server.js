@@ -2,6 +2,8 @@ const app = require("./app");
 
 const express = require("express");
 
+const RedditImageFetcher = require("reddit-image-fetcher");
+
 require("./db");
 
 require("./config")(app);
