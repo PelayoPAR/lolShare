@@ -1,32 +1,37 @@
-
-
-Models: 
+Models:
 
 -- UserModel {
-    _id:
-    userName: unique
-    email: unique
-    password: min 8 char, 
-    favorites: ["memeid1", "memeid2"...]
-    role: [user, admin, premium, guest(viewer)]
-    profile-pic: *** nice to have *** 
-    <!-- with defaults -->
-    subscribed: (to newsletter)
+\_id:
+userName: unique
+email: unique
+password: min 8 char,
+favorites: ["memeid1", "memeid2"...]
+role: [user, admin, premium, guest(viewer)]
+profile-pic: **_ nice to have _**
+<!-- with defaults -->
+subscribed: (to newsletter)
 }
 
 -- memeModel {
-    _id:
-    name: *** ??? ***
-    path:
-    likes: 
-    comments: *** nice to have / messy? ***
+\_id:
+name: **_ ??? _**
+path:
+likes:
+comments: **_ nice to have / messy? _**
 }
 
 -- Views {
-    home
-    login / register / subscribePremium
-    user-main
-    upload-meme
-    meme-view
-    newsletter *** nice to have ***
+home
+login / register / subscribePremium
+user-main
+upload-meme
+meme-view
+newsletter **_ nice to have _**
+}
+
+-- API {
+     https://github.com/arifszn/reddit-image-fetcher
+    
+    command:
+     npm i reddit-image-fetcher
 }
