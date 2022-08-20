@@ -29,15 +29,51 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
 
   if (!email) {
-    return res.status(400).render("auth/register", {
+    return res.status(400).render("auth/signup", {
       emailError: "Please add an email",
       ...req.body,
     });
   }
 
+  if (!email.includes("@")) {
+    // @email andre@ || @
+    return res.status(400).render("auth/signup", {
+      emailError: "Please introduce a valid email",
+      ...req.body,
+    });
+  }
+
+  // **************** email validation handler from deep email validator documentation: https://www.abstractapi.com/guides/node-email-validation#:~:text=Node%20email%20validation.-,How%20Do%20I%20Check%20if%20An%20Email%20is%20Valid%20in,and%20the%20SMTP%20server%20response. *******
+  // router.post('/register', async function(req, res, next) {
+  //   const {email, password} = req.body;
+
+  //   if (!email || !password){
+  //     return res.status(400).send({
+  //       message: "Email or password missing."
+  //     })
+  //   }
+
+  //   const {valid, reason, validators} = await isEmailValid(email);
+
+  //   if (valid) return res.send({message: "OK"});
+
+  //   return res.status(400).send({
+  //     message: "Please provide a valid email address.",
+  //     reason: validators[reason].reason
+  //   })
+
+  // });
+
   if (password.length < 8) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Your password needs to be at least 8 characters long.",
+    });
+  }
+
+  if (password !== confirmPassword) {
+    return res.status(400).render("auth/signup", {
+      passwordError: "Your password and your confirmed password must match",
+      ...req.body,
     });
   }
 
