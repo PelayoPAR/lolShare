@@ -2,7 +2,7 @@ Models:
 
 -- UserModel {
 \_id:
-userName: unique
+username: unique
 email: unique
 password: min 8 char,
 favorites: ["memeid1", "memeid2"...]
