@@ -6,7 +6,7 @@ const RedditImageFetcher = require("reddit-image-fetcher");
 router.get("/", (req, res, next) => {
   RedditImageFetcher.fetch({
     type: "custom",
-    total: 50,
+    total: 20,
     addSubreddit: ["memes", "funny", "dankmemes"],
     removeSubreddit: [],
   })
@@ -18,6 +18,7 @@ router.get("/", (req, res, next) => {
       res.status(500).res.render("index");
     });
 
+  // To enable anti-André mode:
   // RedditImageFetcher.fetch({
   //   type: "custom",
   //   total: 10,
