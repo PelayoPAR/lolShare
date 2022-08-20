@@ -19,11 +19,19 @@ router.get("/signup", isLoggedOut, (req, res) => {
 });
 
 router.post("/signup", isLoggedOut, (req, res) => {
-  const { username, password } = req.body;
+  // added by Pelayo 20-08-22: added email and confirmPassword from the req.body destructuring.
+  const { username, email, password, confirmPassword } = req.body;
 
   if (!username) {
     return res.status(400).render("auth/signup", {
       errorMessage: "Please provide your username.",
+    });
+  }
+
+  if (!email) {
+    return res.status(400).render("auth/register", {
+      emailError: "Please add an email",
+      ...req.body,
     });
   }
 
@@ -34,7 +42,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
   }
 
   //   ! This use case is using a regular expression to control for special characters and min length
-  /*
+
   const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
   if (!regex.test(password)) {
@@ -43,7 +51,6 @@ router.post("/signup", isLoggedOut, (req, res) => {
         "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
     });
   }
-  */
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
@@ -107,6 +114,15 @@ router.post("/login", isLoggedOut, (req, res, next) => {
   if (password.length < 8) {
     return res.status(400).render("auth/login", {
       errorMessage: "Your password needs to be at least 8 characters long.",
+    });
+  }
+
+  // added by Pelayo 20-08-22: trying to implement confirm password at registration
+  if (password !== confirmPassword) {
+    return res.status(400).render("auth/register", {
+      passwordError:
+        "Could you at least pretend like you give a damn?. Could these AT LEAST be the same? For once?... Could you not? We've been through this... It is written... Are you that dumb? You must be... Otherwise you would have done what we ask you to do... So could you, for once in your miserable life, do what youre told? Thank you",
+      ...req.body,
     });
   }
 
