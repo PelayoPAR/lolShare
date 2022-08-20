@@ -16,6 +16,7 @@
     "hbs": "^4.2.0",
     "mongoose": "^6.5.2",
     "morgan": "^1.10.0",
+    "reddit-image-fetcher": "^2.0.11",
     "serve-favicon": "^2.5.0"
   },
   "devDependencies": {
