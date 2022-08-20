@@ -6,8 +6,9 @@ const RedditImageFetcher = require("reddit-image-fetcher");
 router.get("/", (req, res, next) => {
   RedditImageFetcher.fetch({
     type: "custom",
-    total: 10,
-    subreddit: ["cats", "Catswhoyell", "sleepingcats"],
+    total: 50,
+    addSubreddit: ["memes", "funny", "dankmemes"],
+    removeSubreddit: [],
   })
     .then((result) => {
       console.log(result);
@@ -16,6 +17,19 @@ router.get("/", (req, res, next) => {
     .catch((err) => {
       res.status(500).res.render("index");
     });
+
+  // RedditImageFetcher.fetch({
+  //   type: "custom",
+  //   total: 10,
+  //   subreddit: ["cats", "Catswhoyell", "sleepingcats"],
+  // })
+  //   .then((result) => {
+  //     console.log(result);
+  //     res.render("index", { result });
+  //   })
+  //   .catch((err) => {
+  //     res.status(500).res.render("index");
+  //   });
 });
 
 module.exports = router;

@@ -45,3 +45,19 @@ https://github.com/arifszn/reddit-image-fetcher
      npm i reddit-image-fetcher
 
 }
+
+auth login
+
+get
+post
+
+api calls
+filtered api calls
+not case sensitive
+search
+
+Asem:
+change subreddit fetch meme side bar and nav bar
+
+Pelayo:
+login and registration hbs and the thingy (auth routes)
