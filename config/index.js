@@ -61,5 +61,4 @@ module.exports = (app) => {
       }),
     })
   );
-  app.use("deep-email-validator");
 };

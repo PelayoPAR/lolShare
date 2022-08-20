@@ -5,9 +5,9 @@ Models:
 username: unique
 email: unique
 password: min 8 char,
-favorites: ["memeid1", "memeid2"...]
+favorites: ["meme_id1", "meme_id2"...]
 role: [user, admin, premium, guest(viewer)]
-profile-pic: **_ nice to have _**
+profile-pic: **_ nice to have _** cloudinary
 
 <!-- with defaults -->
 
