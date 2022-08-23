@@ -79,14 +79,14 @@ router.post("/signup", isLoggedOut, (req, res) => {
 
   //   ! This use case is using a regular expression to control for special characters and min length
 
-  const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+  // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
 
-  if (!regex.test(password)) {
-    return res.status(400).render("signup", {
-      errorMessage:
-        "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
-    });
-  }
+  // if (!regex.test(password)) {
+  //   return res.status(400).render("signup", {
+  //     errorMessage:
+  //       "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
+  //   });
+  // }
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username }).then((found) => {
@@ -94,7 +94,7 @@ router.post("/signup", isLoggedOut, (req, res) => {
     if (found) {
       return res
         .status(400)
-        .render("auth.signup", { errorMessage: "Username already taken." });
+        .render("auth/signup", { errorMessage: "Username already taken." });
     }
 
     // if user is not found, create a new user - start with hashing the password
@@ -104,8 +104,12 @@ router.post("/signup", isLoggedOut, (req, res) => {
       .then((hashedPassword) => {
         // Create a user and save it in the database
         return User.create({
+          // 23/08/22 - Pelayo: added email, favorites and role
           username,
+          email,
           password: hashedPassword,
+          // favorites, DONT DO IT, IT WILL BREAK THE USER CREATION ON SIGNUP
+          // role, SAME AS ABOVE
         });
       })
       .then((user) => {
@@ -155,7 +159,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
   // added by Pelayo 20-08-22: trying to implement confirm password at registration
   if (password !== confirmPassword) {
-    return res.status(400).render("auth/register", {
+    return res.status(400).render("auth/signup", {
       passwordError:
         "Could you at least pretend like you give a damn?. Could these AT LEAST be the same? For once?... Could you not? We've been through this... It is written... Are you that dumb? You must be... Otherwise you would have done what we ask you to do... So could you, for once in your miserable life, do what youre told? Thank you",
       ...req.body,
