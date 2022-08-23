@@ -16,7 +16,9 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
-    favorites: [],
+    favorites: {
+      default: [],
+    },
     role: {
       type: String,
       default: "user",

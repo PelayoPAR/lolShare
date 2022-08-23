@@ -1,28 +1,33 @@
 <form action="/auth/signup" method="POST">
-   <label> Username
-      <input type="text" name="username" placeholder="Your username" value="{{username}}">
+   <label for="username"> Username
+      <input type="text" id="username" name="username" placeholder="Your username" value="{{username}}">
    </label>
    <br />
-   <label> Email
-      <input type="text" name="email" placeholder="Your email" value="{{email}}">
+   <label for="email"> Email
+      <input type="text" id="email" name="email" placeholder="Your email" value="{{email}}">
    </label>
    <br />
-   <label> Password
-      <input type="password" name="password" placeholder="Your password">
+   <label for="password"> Password
+      <input type="password" id="password" name="password" placeholder="Your password">
    </label>
    <br />
-   <label>Confirm Password
+   <label for="confirmPassword">Confirm Password
     <input
       type='password'
+      id="confirmPassword"
       name='confirmPassword'
       placeholder='Repeat password'
     />
   </label>
   <br />
 
-   <button type="submit">Submit</button>
+   <button type="submit">Create User</button>
 </form>
 
 {{#if errorMessage}}
    {{errorMessage}}
+{{/if}}
+
+{{#if user}}
+   <h4>Thank you for signing up <a href="/user/{{user._id}}">{{user.username}}</a></h4>
 {{/if}}
