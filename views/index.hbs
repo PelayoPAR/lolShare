@@ -1,5 +1,14 @@
 <h1>{{appTitle}} 🚀</h1>
-<p>Welcome Ironhacker!</p>
+
+
+
+<div>
+{{#if user}}
+   <p>Welcome <a href="/user/{{user._id}}">{{user.username}}</a>!</p>
+{{else}}
+    <p>Welcome!</p>
+{{/if}}
+</div>
 
 <div>
 {{#each result}}

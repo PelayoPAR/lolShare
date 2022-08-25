@@ -17,6 +17,7 @@ const userSchema = new Schema(
       required: true,
     },
     favorites: {
+      type: Array,
       default: [],
     },
     role: {
