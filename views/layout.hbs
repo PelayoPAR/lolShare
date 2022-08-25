@@ -15,14 +15,19 @@
       <p>lolShare</p>
       </div>
       <div>
-        {{!-- pending if isLoggedIn show log out and viceversa --}}
       <ul>
+        {{#unless isLoggedIn}}
         <li>
           <a href="/auth/login">Log in</a>
         </li>
         <li>
           <a href="/auth/signup">Sign up</a>
         </li>
+        {{else}}
+        <li>
+          <a href="/auth/logout">Log out</a>
+        </li>
+        {{/unless}}
       </ul>
       </div>
     </nav>

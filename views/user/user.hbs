@@ -1,1 +1,12 @@
 {{!-- the idea here is to have a profile page to direct if user wants to check their profile (cRud) --}}
+
+<h1>{{user.username}} Profile</h1>
+<p>Your user ID is {{user._id}}</p>
+<p>Your email is: {{user.email}}</p>
+<p>Your role is: {{user.role}}</p>
+<p>Your favorites are: {{user.favorites}}</p>
+
+
+{{#if errorMessage}}
+   <p> {{errorMessage}} </p>
+{{/if}}
