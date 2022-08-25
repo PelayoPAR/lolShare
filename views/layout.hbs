@@ -16,18 +16,18 @@
       </div>
       <div>
       <ul>
-        {{!-- {{#if isLoggedOut}} --}}
+        {{#unless isLoggedIn}}
         <li>
           <a href="/auth/login">Log in</a>
         </li>
         <li>
           <a href="/auth/signup">Sign up</a>
         </li>
-        {{!-- {{else}} --}}
+        {{else}}
         <li>
           <a href="/auth/logout">Log out</a>
         </li>
-        {{!-- {{/if}} --}}
+        {{/unless}}
       </ul>
       </div>
     </nav>
