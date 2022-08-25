@@ -157,14 +157,14 @@ router.post("/login", isLoggedOut, (req, res, next) => {
     });
   }
 
-  // added by Pelayo 20-08-22: trying to implement confirm password at registration
-  if (password !== confirmPassword) {
-    return res.status(400).render("auth/signup", {
-      passwordError:
-        "Could you at least pretend like you give a damn?. Could these AT LEAST be the same? For once?... Could you not? We've been through this... It is written... Are you that dumb? You must be... Otherwise you would have done what we ask you to do... So could you, for once in your miserable life, do what youre told? Thank you",
-      ...req.body,
-    });
-  }
+  // added by Pelayo 20-08-22: trying to implement confirm password at login NOT NEEDED
+  // if (password !== confirmPassword) {
+  //   return res.status(400).render("auth/login", {
+  //     passwordError:
+  //       "Could you at least pretend like you give a damn?. Could these AT LEAST be the same? For once?... Could you not? We've been through this... It is written... Are you that dumb? You must be... Otherwise you would have done what we ask you to do... So could you, for once in your miserable life, do what youre told? Thank you",
+  //     ...req.body,
+  //   });
+  // }
 
   // Search the database for a user with the username submitted in the form
   User.findOne({ username })
@@ -199,6 +199,7 @@ router.post("/login", isLoggedOut, (req, res, next) => {
 
 router.get("/logout", isLoggedIn, (req, res) => {
   req.session.destroy((err) => {
+    // res.clearCookie(""); log out is having issues, when clicking log out, it renders login... also, cant destroy session or user?
     if (err) {
       return res
         .status(500)
