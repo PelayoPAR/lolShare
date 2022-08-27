@@ -14,7 +14,7 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
     return res.render("user/user");
   } catch (err) {
     console.error(err);
-    return res.status(500).render("/", { errorMessage: err.message });
+    return res.status(500).redirect("/", { errorMessage: err.message });
   }
 });
 
@@ -28,7 +28,7 @@ router.get("/:userId/update-user", isLoggedIn, async (req, res) => {
     return res.render("user/update-user");
   } catch (err) {
     console.error(err);
-    return res.status(500).render("/", { errorMessage: err.message });
+    return res.status(500).redirect("/", { errorMessage: err.message });
   }
 });
 
@@ -73,25 +73,37 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
   });
 });
 
+// DELETE USER:
 router.get("/:userId/delete-user", isLoggedIn, async (req, res) => {
-  const userId = req.params.userId;
-  console.log("USER ID:", req.params.userId);
+  const userId = req.session.user._id;
+  console.log("USER ID:", req.session.user._id);
   try {
     const userInfo = await User.findById(userId);
 
-    return res.render("user/update-user");
+    return res.render("user/delete-user");
   } catch (err) {
     console.error(err);
-    return res.status(500).render("/", { errorMessage: err.message });
+    return res.status(500).redirect("/", { errorMessage: err.message });
   }
 });
 
-// router.post("/:userId/delete-user", isLoggedIn, async (req, res) => {
-//   try {
-//     await User.findByIdAndDelete(req.session.userId);
-//   } catch (error) {
-//     return res.status(500).render("/", { errorMessage: err.message });
-//   }
-// });
+router.post("/:userId/delete-user", isLoggedIn, async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.session.user._id);
+    console.log("User deleted");
+    //after deleting the user from the DB, also destroy the session to avoid mismatch between DB and browser (or else the user still exists "in the browser")
+    req.session.destroy((err) => {
+      if (err) {
+        return res
+          .status(500)
+          .render("auth/logout", { errorMessage: err.message });
+      }
+      return res.redirect("/");
+    });
+    return res.status(200).redirect("/");
+  } catch (error) {
+    return res.status(500).redirect("/", { errorMessage: err.message });
+  }
+});
 
 module.exports = router;

@@ -1,9 +1,7 @@
 <h2>Update user</h2>
 
 {{! update username, update email }}
-<h3>errorMessage:{{errorMessage}}</h3>
-<h3>usernameError: {{usernameError}}</h3>
-<h3>emailError: {{emailError}}</h3>
+
 <form method="post" action="/user/{{user._id}}/update-user">
   <label>Username
     <input
