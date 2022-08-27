@@ -9,10 +9,34 @@
   </head>
 
   <body>
+    <div class="nav-container">
+    <nav>
+      <div>
+      <p>lolShare</p>
+      </div>
+      <div>
+      <ul>
+        {{#unless isLoggedIn}}
+        <li>
+          <a href="/auth/login">Log in</a>
+        </li>
+        <li>
+          <a href="/auth/signup">Sign up</a>
+        </li>
+        {{else}}
+        <li>
+          <a href="/auth/logout">Log out</a>
+        </li>
+        {{/unless}}
+      </ul>
+      </div>
+    </nav>
+    </div>
 
     {{{body}}}
 
     <script src="/js/script.js"></script>
+    <footer>&copy; lolShare | 2022</footer>
   </body>
 
 </html>
