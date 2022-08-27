@@ -1,7 +1,7 @@
 <h2>Update user</h2>
 
 {{! update username, update email }}
-<form method="post" action="/user/update-user">
+<form method="post" action="/user/{{user._id}}/update-user">
   <label>Username
     <input
       type="text"
