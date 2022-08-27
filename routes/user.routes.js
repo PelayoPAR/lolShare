@@ -20,6 +20,7 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
 
 router.get("/:userId/update-user", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
+  //   req.session.user._id
   console.log("USER ID:", req.params.userId);
   try {
     const userInfo = await User.findById(userId);
@@ -48,20 +49,20 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
       ...req.body,
     });
   }
-
+  //   console.log("I AM HERE ON TV", req.session.userId);
   const aSingleUser = await User.findOne({
     $or: [{ username }, { email }],
-    _id: { $ne: ObjectId(req.session.userId) },
+    _id: { $ne: ObjectId(req.session.user._id) },
   });
 
   if (!aSingleUser) {
-    await User.findByIdAndUpdate(req.session.userId, { username, email });
+    await User.findByIdAndUpdate(req.session.user._id, { username, email });
     return res.redirect("/");
   }
 
   User.find({
     _id: {
-      $nin: [ObjectId(req.session.userId)],
+      $nin: [ObjectId(req.session.user._id)],
       $or: [{ username }, { email }],
     },
   });
@@ -85,7 +86,7 @@ router.get("/:userId/delete-user", isLoggedIn, async (req, res) => {
   }
 });
 
-// router.delete("/:userId/delete-user", isLoggedIn, async (req, res) => {
+// router.post("/:userId/delete-user", isLoggedIn, async (req, res) => {
 //   try {
 //     await User.findByIdAndDelete(req.session.userId);
 //   } catch (error) {
