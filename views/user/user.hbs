@@ -5,7 +5,10 @@
 <p>Your email is: {{user.email}}</p>
 <p>Your role is: {{user.role}}</p>
 <p>Your favorites are: {{user.favorites}}</p>
+<br>
 <a href="/user/{{user._id}}/update-user">Feel like updating your profile? Click In
+<br>
+<a href="/user/{{user._id}}/delete-user">Feel like leaving us? It'd be a shame but... up to you...</a>
 
 {{#if errorMessage}}
    <p> {{errorMessage}} </p>
