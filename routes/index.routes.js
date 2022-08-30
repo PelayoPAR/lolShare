@@ -1,5 +1,8 @@
 const router = require("express").Router();
-
+const mongoose = require("mongoose");
+const User = require("../models/User.model");
+const isLoggedIn = require("../middleware/isLoggedIn");
+const bcrypt = require("bcrypt");
 const RedditImageFetcher = require("reddit-image-fetcher");
 
 /* GET home page */

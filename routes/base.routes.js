@@ -6,8 +6,8 @@ baseRouter.use((req, res, next) => {
   next();
 });
 
-// baseRouter.get("/", (req, res) => {
-// res.render("index");
-// });
+//baseRouter.get("/", (req, res) => {
+//  res.render("index");
+//});
 
 module.exports = baseRouter;

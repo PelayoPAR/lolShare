@@ -16,3 +16,8 @@ h1 {
 img {
   width: 100vh;
 }
+
+.results{
+  display: flex;
+  flex-direction: column;
+}
