@@ -7,6 +7,7 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 
+// USER PROFILE:
 router.get("/:userId", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
   try {
@@ -18,6 +19,7 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
   }
 });
 
+// UPDATE USER:
 router.get("/:userId/update-user", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
   //   req.session.user._id
