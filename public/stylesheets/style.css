@@ -1,8 +1,20 @@
+/************** RESET CSS ************/
+*,
+::before,
+::after{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black;
   color: white;
+  display: grid;
+  text-decoration: none;
 }
 
 a {
