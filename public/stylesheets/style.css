@@ -9,7 +9,7 @@
 
 
 body {
-  padding: 50px;
+  padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: black;
   color: white;
@@ -31,8 +31,26 @@ img {
   width: 100vh;
 }
 
+.main-logo {
+  font-size: 2rem;
+}
 
 .results{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0 20px;
+}
+
+.meme-title {
+  font-size: 1.5rem;
+}
+
+/* .main-header {
+  position: fixed;
+} */
+
+.log-bar {
+  /* position: fixed; */
 }

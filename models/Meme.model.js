@@ -21,4 +21,5 @@ const MemeSchema = new Schema({
   subreddit: {
     type: String,
   },
+  // comments: { type: String, }
 });
