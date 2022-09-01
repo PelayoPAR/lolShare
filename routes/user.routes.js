@@ -75,6 +75,65 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
   });
 });
 
+// UPDATE PASSWORD:
+// router.get("/:userId/update-password", isLoggedIn, async (req, res) => {
+//   // console.log("REQUSER:", req.user);
+//   // console.log("REQSESSIONUSER", req.session.user);
+//   res.render("user/update-password", { user: req.session.user });
+// });
+
+// router.post("/:userId/update-password", isLoggedIn, async (req, res) => {
+//   const user = req.session.user;
+//   const { password = "", newPassword = "", confirmPassword = "" } = req.body;
+
+//   if (password.length < 8) {
+//     return res.status(400).render("user/update-password", {
+//       errorMessage: "Your password needs to be at least 8 characters long.",
+//     });
+//   }
+
+//   if (newPassword.length < 8) {
+//     return res.status(400).render("user/update-password", {
+//       errorMessage: "Your password needs to be at least 8 characters long.",
+//     });
+//   }
+
+//   if (newPassword !== confirmPassword) {
+//     return res.status(400).render("user/update-password", {
+//       passwordError: "Your password and your confirmed password must match",
+//       ...req.body,
+//     });
+//   }
+
+//   //   ! This use case is using a regular expression to control for special characters and min length
+
+//   // const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+
+//   // if (!regex.test(password)) {
+//   //   return res.status(400).render("signup", {
+//   //     errorMessage:
+//   //       "Password needs to have at least 8 chars and must contain at least one number, one lowercase and one uppercase letter.",
+//   //   });
+//   // }
+
+//   const isSamePassword = bcrypt.compareSync(password, user.password);
+
+//   if (!isSamePassword) {
+//     return res.status(400).render("user/update-password", {
+//       user,
+//       errorMessage: "That is not your password",
+//     });
+//   }
+
+//   const hashedPassword = bcrypting(password);
+
+//   await User.findByIdAndUpdate(req.session.user._id, {
+//     password: hashedPassword,
+//   });
+
+//   res.redirect("/");
+// });
+
 // DELETE USER:
 router.get("/:userId/delete-user", isLoggedIn, async (req, res) => {
   const userId = req.session.user._id;
