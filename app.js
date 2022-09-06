@@ -33,6 +33,9 @@ app.use("/auth", authRoutes);
 const userRoutes = require("./routes/user.routes");
 app.use("/user", userRoutes);
 
+const memeRoutes = require("./routes/meme.routes");
+app.use("/user", memeRoutes);
+
 // ❗ To handle errors. Routes that don't exist or errors that you handle in specific routes
 require("./error-handling")(app);
 

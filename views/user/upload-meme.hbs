@@ -1,0 +1,16 @@
+<form
+  method="post"
+  action="upload-meme"
+  enctype="multipart/form-data"
+>
+  <input type="file" name="meme-image" />
+  <label> Meme Title
+  <input type="text" name="memeTitle" placeholder="Meme Title"/>
+</label>
+  <button type="submit">Submit Yo Meme</button>
+</form>
+<div>
+  {{#if img}}
+    <img src="{{img}}" />
+  {{/if}}
+</div>

@@ -4,7 +4,9 @@
 <p>Your user ID is {{user._id}}</p>
 <p>Your email is: {{user.email}}</p>
 <p>Your role is: {{user.role}}</p>
-<p>Your favorites are: {{user.favorites}}</p>
+<div>
+   <a href="/user/{{user._id}}/upload-meme">Share your treasured memes</a>
+</div>
 <br>
 <a href="/user/{{user._id}}/update-user">Feel like updating your profile? Click here! </a>
 <br>

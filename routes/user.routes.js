@@ -7,6 +7,7 @@ const uploadMiddleware = require("../middleware/cloudinary");
 const {
   Types: { ObjectId },
 } = require("mongoose");
+const { Router } = require("express");
 
 // USER PROFILE:
 router.get("/:userId", isLoggedIn, async (req, res) => {
