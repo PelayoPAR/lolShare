@@ -25,6 +25,8 @@ const userSchema = new Schema(
       default: "user",
       enum: ["user", "admin", "premium"],
     },
+
+    memesuploaded: String,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
