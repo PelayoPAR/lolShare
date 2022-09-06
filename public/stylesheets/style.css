@@ -1,7 +1,7 @@
 /************** RESET CSS ************/
 *,
-::before,
-::after{
+*::before,
+*::after{
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -11,7 +11,7 @@
 body {
   padding: 0px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: black;
+  background: black;
   color: white;
   display: grid;
   text-decoration: none;
@@ -20,6 +20,39 @@ body {
 a {
   color: #00b7ff;
   text-decoration: none;
+}
+
+ul{
+  list-style: none;
+}
+
+/* Header/Navbar*/
+
+.main-header{
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-transform: uppercase;
+  height: 100px;
+  padding: 0 30px;
+}
+
+/* Logo*/
+
+.logo{
+  width: 200px;
+  height: auto;
+}
+
+.logo img{
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 h1 {
@@ -51,6 +84,3 @@ img {
   position: fixed;
 } */
 
-.log-bar {
-  /* position: fixed; */
-}
