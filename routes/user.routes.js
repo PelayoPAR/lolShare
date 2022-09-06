@@ -3,6 +3,7 @@ const mongoose = require("mongoose");
 const User = require("../models/User.model");
 const isLoggedIn = require("../middleware/isLoggedIn");
 const bcrypt = require("bcrypt");
+const uploadMiddleware = require("../middleware/cloudinary");
 const {
   Types: { ObjectId },
 } = require("mongoose");
