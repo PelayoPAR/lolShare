@@ -22,6 +22,8 @@ router.post(
   async (req, res) => {
     console.log(req.file);
     console.log(req.body);
+    console.log("URL", req.file.path);
+    console.log("Title", req.body.memeTitle);
     await Meme.findByIdAndUpdate(req.session.userId, {
       profilePic: req.file.path,
     });
