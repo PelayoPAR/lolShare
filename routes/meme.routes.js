@@ -24,8 +24,9 @@ router.post(
     console.log(req.body);
     console.log("URL", req.file.path);
     console.log("Title", req.body.memeTitle);
-    await Meme.findByIdAndUpdate(req.session.userId, {
-      memeuploaded: req.file.path,
+    const memeCreated = await Meme.create({
+      title: req.body.memeTitle,
+      image: req.file.path,
     });
     const currentUserInfo = await User.findById(req.session.user);
     await User.findByIdAndUpdate(req.session.user, {
