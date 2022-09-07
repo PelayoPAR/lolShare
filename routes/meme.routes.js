@@ -25,7 +25,7 @@ router.post(
     console.log("URL", req.file.path);
     console.log("Title", req.body.memeTitle);
     await Meme.findByIdAndUpdate(req.session.userId, {
-      profilePic: req.file.path,
+      memeuploaded: req.file.path,
     });
 
     res.render("user/upload-meme");

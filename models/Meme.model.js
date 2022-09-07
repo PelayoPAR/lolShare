@@ -9,6 +9,7 @@ const memeSchema = new Schema(
       type: String,
       required: true,
     },
+    memeuploaded: String,
   },
   {
     // this second object adds extra properties: `createdAt` and `updatedAt`
