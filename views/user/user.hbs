@@ -14,8 +14,9 @@
 <br>
 <a href="/user/{{user._id}}/delete-user">Feel like leaving us? It'd be a shame but... up to you...</a>
 {{!-- <p>{{userInfo.memesUploaded.length}}</p> --}}
+<div>
 {{#each userInfo.memesUploaded}}
-   <div>
+   <div class="results">
       <p class="uploaded-memes-title">{{title}}</p>
       <img class="uploaded-memes-image" src="{{image}}" alt="">
       
@@ -25,14 +26,16 @@
 
       </form> --}}
 
-      <div>
+      {{!-- <div>
       <button onclick="deleteMeme()">
          Delete Meme</button>
-      </div>
+      </div> --}}
 
 
    </div>
+   
 {{/each}}
+</div>
 
 {{#if errorMessage}}
    <p> {{errorMessage}} </p>
