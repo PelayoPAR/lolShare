@@ -9,6 +9,7 @@ const {
   Types: { ObjectId },
 } = require("mongoose");
 const { Router } = require("express");
+//const multer = require("multer");
 
 router.get("/:userId/upload-meme", (req, res) => {
   res.render("user/upload-meme");
@@ -20,7 +21,8 @@ router.post(
   uploadMiddleware.single("meme-image"),
   async (req, res) => {
     console.log(req.file);
-    await MemeModel.findByIdAndUpdate(req.session.userId, {
+    console.log(req.body);
+    await Meme.findByIdAndUpdate(req.session.userId, {
       profilePic: req.file.path,
     });
 
