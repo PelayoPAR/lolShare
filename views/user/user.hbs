@@ -18,6 +18,19 @@
    <div>
       <p class="uploaded-memes-title">{{title}}</p>
       <img class="uploaded-memes-image" src="{{image}}" alt="">
+      
+      {{!-- <form method="post" action="/user/{{user._id}}">
+
+      <button type="submit">Delete Meme</button>
+
+      </form> --}}
+
+      <div>
+      <button onclick="deleteMeme()">
+         Delete Meme</button>
+      </div>
+
+
    </div>
 {{/each}}
 
