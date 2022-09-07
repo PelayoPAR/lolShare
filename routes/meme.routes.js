@@ -24,11 +24,16 @@ router.post(
     console.log(req.body);
     console.log("URL", req.file.path);
     console.log("Title", req.body.memeTitle);
-    await Meme.findByIdAndUpdate(req.session.userId, {
-      profilePic: req.file.path,
+    const memeCreated = await Meme.create({
+      title: req.body.memeTitle,
+      image: req.file.path,
     });
-
-    res.render("user/upload-meme");
+    const currentUserInfo = await User.findById(req.session.user);
+    await User.findByIdAndUpdate(req.session.user, {
+      memesUploaded: [...currentUserInfo.memesUploaded, memeCreated._id],
+    });
+    console.log(memeCreated);
+    res.render("user/upload-meme", { memeCreated });
   }
 );
 module.exports = router;

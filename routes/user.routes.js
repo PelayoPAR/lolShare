@@ -13,8 +13,10 @@ const { Router } = require("express");
 router.get("/:userId", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
   try {
-    const userInfo = await User.findById(userId);
-    return res.render("user/user");
+    const userInfo = await User.findById(userId).populate("memesUploaded");
+    console.log(userInfo);
+
+    return res.render("user/user", { userInfo });
   } catch (err) {
     console.error(err);
     return res.status(500).redirect("/", { errorMessage: err.message });

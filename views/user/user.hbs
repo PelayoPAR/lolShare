@@ -1,4 +1,4 @@
-{{!-- the idea here is to have a profile page to direct if user wants to check their profile (cRud) --}}
+{{!-- the idea here is to have a profile page to direct if userInfo wants to check their profile (cRud) --}}
 
 <h1>{{user.username}} Profile</h1>
 <p>Your user ID is {{user._id}}</p>
@@ -13,6 +13,13 @@
 <a href="/user/{{user._id}}/update-password">Feel like updating your password? Click here! </a>
 <br>
 <a href="/user/{{user._id}}/delete-user">Feel like leaving us? It'd be a shame but... up to you...</a>
+{{!-- <p>{{userInfo.memesUploaded.length}}</p> --}}
+{{#each userInfo.memesUploaded}}
+   <div>
+      <p class="uploaded-memes-title">{{title}}</p>
+      <img class="uploaded-memes-image" src="{{image}}" alt="">
+   </div>
+{{/each}}
 
 {{#if errorMessage}}
    <p> {{errorMessage}} </p>
