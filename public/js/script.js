@@ -9,17 +9,17 @@ document.addEventListener(
     // deleteMemeButton = document.querySelector("#deleteMemeButton");
     //  fetchButton = document.querySelector("#fetchButton");
     //  fetchButton.onClick;
-    refreshPageBtn = document.querySelector("#refreshPageBtn");
-    refreshPageBtn.onClick;
+    // refreshPageBtn = document.querySelector("#refreshPageBtn");
+    // refreshPageBtn.onClick;
   },
   false
 );
 
-function refreshPage() {
-  console.log("im hereeee");
-  window.location.reload();
-  // window.scrollTo(0, 0);
-}
+// function refreshPage() {
+//   console.log("im hereeee");
+//   window.location.reload();
+// window.scrollTo(0, 0);
+// }
 
 // async function deleteMeme() {
 
