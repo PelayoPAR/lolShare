@@ -54,6 +54,7 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
       ...req.body,
     });
   }
+
   //   console.log("I AM HERE ON TV", req.session.userId);
   const aSingleUser = await User.findOne({
     $or: [{ username }, { email }],
