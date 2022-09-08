@@ -26,7 +26,6 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
 // UPDATE USER:
 router.get("/:userId/update-user", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
-  //   req.session.user._id
   console.log("USER ID:", req.params.userId);
   try {
     const userInfo = await User.findById(userId);
@@ -62,7 +61,12 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
   });
 
   if (!aSingleUser) {
-    await User.findByIdAndUpdate(req.session.user._id, { username, email });
+    const freshUser = await User.findByIdAndUpdate(
+      req.session.user._id,
+      { username, email },
+      { new: true }
+    );
+    req.session.user = freshUser;
     return res.redirect("/");
   }
 
@@ -81,8 +85,9 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
 
 // UPDATE PASSWORD:
 router.get("/:userId/update-password", isLoggedIn, async (req, res) => {
-  // console.log("REQUSER:", req.user);
+  console.log("REQUSER:", req.user);
   console.log("REQSESSIONUSER", req.session.user);
+  console.log(User.findById(req.session.user._id));
   res.render("user/update-password", { user: req.session.user });
 });
 //
