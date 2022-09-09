@@ -1,9 +1,12 @@
 {{!-- the idea here is to have a profile page to direct if userInfo wants to check their profile (cRud) --}}
 
+<div class="main">
 <h1>{{user.username}} Profile</h1>
+<br>
 <p>Your user ID is {{user._id}}</p>
 <p>Your email is: {{user.email}}</p>
 <p>Your role is: {{user.role}}</p>
+<br>
 <div>
    <a href="/user/{{user._id}}/upload-meme">Share your treasured memes</a>
 </div>
@@ -35,6 +38,7 @@
    </div>
    
 {{/each}}
+</div>
 </div>
 
 {{#if errorMessage}}

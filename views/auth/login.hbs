@@ -1,13 +1,19 @@
+
+<h2 class="main-h2">LOG IN</h2>
+
+<div class="upload-meme-main">
 <form action="/auth/login" method="POST">
    <label> Username
       <input type="text" name="username" placeholder="Your username" value="{{username}}">
    </label>
+   <br>
    <label> Password
       <input type="password" name="password" placeholder="Your password">
    </label>
-
-   <button type="submit">Submit</button>
+   <br>
+   <button type="submit">Log In</button>
 </form>
+</div>
 
 {{#if errorMessage}}
    {{errorMessage}}

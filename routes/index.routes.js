@@ -14,7 +14,7 @@ router.get("/", (req, res, next) => {
     removeSubreddit: [],
   })
     .then((result) => {
-      console.log(result);
+      // console.log(result);
       res.render("index", { result });
     })
     .catch((err) => {

@@ -14,7 +14,7 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
   try {
     const userInfo = await User.findById(userId).populate("memesUploaded");
-    console.log(userInfo);
+    // console.log(userInfo);
 
     return res.render("user/user", { userInfo });
   } catch (err) {
@@ -26,7 +26,7 @@ router.get("/:userId", isLoggedIn, async (req, res) => {
 // UPDATE USER:
 router.get("/:userId/update-user", isLoggedIn, async (req, res) => {
   const userId = req.params.userId;
-  console.log("USER ID:", req.params.userId);
+  // console.log("USER ID:", req.params.userId);
   try {
     const userInfo = await User.findById(userId);
 
@@ -86,16 +86,16 @@ router.post("/:userId/update-user", isLoggedIn, async (req, res) => {
 
 // UPDATE PASSWORD:
 router.get("/:userId/update-password", isLoggedIn, async (req, res) => {
-  console.log("REQUSER:", req.user);
-  console.log("REQSESSIONUSER", req.session.user);
-  console.log(User.findById(req.session.user._id));
+  // console.log("REQUSER:", req.user);
+  // console.log("REQSESSIONUSER", req.session.user);
+  // console.log(User.findById(req.session.user._id));
   res.render("user/update-password", { user: req.session.user });
 });
 //
 router.post("/:userId/update-password", isLoggedIn, async (req, res) => {
   const user = req.session.user;
   const { password = "", newPassword = "", confirmPassword = "" } = req.body;
-  console.log("Passwordsss:", password, newPassword, confirmPassword);
+  // console.log("Passwordsss:", password, newPassword, confirmPassword);
 
   if (password.length < 8) {
     return res.status(400).render("user/update-password", {
@@ -148,7 +148,7 @@ router.post("/:userId/update-password", isLoggedIn, async (req, res) => {
 // DELETE USER:
 router.get("/:userId/delete-user", isLoggedIn, async (req, res) => {
   const userId = req.session.user._id;
-  console.log("USER ID:", req.session.user._id);
+  // console.log("USER ID:", req.session.user._id);
   try {
     const userInfo = await User.findById(userId);
 
@@ -162,7 +162,7 @@ router.get("/:userId/delete-user", isLoggedIn, async (req, res) => {
 router.post("/:userId/delete-user", isLoggedIn, async (req, res) => {
   try {
     await User.findByIdAndDelete(req.session.user._id);
-    console.log("User deleted");
+    // console.log("User deleted");
     //after deleting the user from the DB, also destroy the session to avoid mismatch between DB and browser (or else the user still exists "in the browser")
     req.session.destroy((err) => {
       if (err) {
