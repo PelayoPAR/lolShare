@@ -1,9 +1,9 @@
 
-<h1>Welcome to LolShare, have fun &#128514</h1>
+<h1 class="welcome-h1">Welcome to LolShare, have fun &#128514</h1>
 
-<div>
+<div class="welcome-user">
 {{#if user}}
-   <p>Welcome <a href="/user/{{user._id}}">{{user.username}}! Click here for profile options</a>! </p>
+   <p>Welcome <a href="/user/{{user._id}}"><span class="username-at-welcome">{{user.username}}!</span> Click here for profile options</a>! </p>
 {{else}}
     <p>Welcome!</p>
 {{/if}}

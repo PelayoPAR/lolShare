@@ -1,46 +1,45 @@
 {{!-- the idea here is to have a profile page to direct if userInfo wants to check their profile (cRud) --}}
 
 <div class="main">
-<h1>{{user.username}} Profile</h1>
-<br>
-<p>Your user ID is {{user._id}}</p>
-<p>Your email is: {{user.email}}</p>
-<p>Your role is: {{user.role}}</p>
-<br>
-<div>
-   <a href="/user/{{user._id}}/upload-meme">Share your treasured memes</a>
-</div>
-<br>
-<a href="/user/{{user._id}}/update-user">Feel like updating your profile? Click here! </a>
-<br>
-<a href="/user/{{user._id}}/update-password">Feel like updating your password? Click here! </a>
-<br>
-<a href="/user/{{user._id}}/delete-user">Feel like leaving us? It'd be a shame but... up to you...</a>
-{{!-- <p>{{userInfo.memesUploaded.length}}</p> --}}
-<div>
-{{#each userInfo.memesUploaded}}
-   <div class="results">
-      <p class="uploaded-memes-title">{{title}}</p>
-      <img class="uploaded-memes-image" src="{{image}}" alt="">
-      
-      {{!-- <form method="post" action="/user/{{user._id}}">
+   <h1>{{user.username}}'S Profile</h1>
+   <br>
+   <div class="user-user">
+      <p>Your user ID is {{user._id}}</p>
+      <p>Your email is: {{user.email}}</p>
+      <p>Your role is: {{user.role}}</p>
+      <br>
+      <div>
+         <a href="/user/{{user._id}}/upload-meme">Share your treasured memes</a>
+      </div>
+      <br>
+      <a href="/user/{{user._id}}/update-user">Feel like updating your profile? Click here! </a>
+      <br>
+      <a href="/user/{{user._id}}/update-password">Feel like updating your password? Click here! </a>
+      <br>
+      <a href="/user/{{user._id}}/delete-user">Feel like leaving us? It'd be a shame but... up to you...</a>
+      {{!-- <p>{{userInfo.memesUploaded.length}}</p> --}}
+         <div>
+         {{#each userInfo.memesUploaded}}
+            <div class="results">
+               <p class="uploaded-memes-title">{{title}}</p>
+               <img class="uploaded-memes-image" src="{{image}}" alt="">
 
-      <button type="submit">Delete Meme</button>
+               {{!-- <form method="post" action="/user/{{user._id}}">
 
-      </form> --}}
+               <button type="submit">Delete Meme</button>
 
-      {{!-- <div>
-      <button onclick="deleteMeme()">
-         Delete Meme</button>
-      </div> --}}
+               </form> --}}
 
+               {{!-- <div>
+               <button onclick="deleteMeme()">
+                  Delete Meme</button>
+               </div> --}}
+            </div>
 
+          {{/each}}
+         </div>
    </div>
-   
-{{/each}}
 </div>
-</div>
-
 {{#if errorMessage}}
    <p> {{errorMessage}} </p>
 {{/if}}
