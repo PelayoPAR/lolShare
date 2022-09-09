@@ -20,10 +20,10 @@ router.post(
   isLoggedIn,
   uploadMiddleware.single("meme-image"),
   async (req, res) => {
-    console.log(req.file);
-    console.log(req.body);
-    console.log("URL", req.file.path);
-    console.log("Title", req.body.memeTitle);
+    // console.log(req.file);
+    // console.log(req.body);
+    // console.log("URL", req.file.path);
+    // console.log("Title", req.body.memeTitle);
     const memeCreated = await Meme.create({
       title: req.body.memeTitle,
       image: req.file.path,
@@ -32,7 +32,7 @@ router.post(
     await User.findByIdAndUpdate(req.session.user, {
       memesUploaded: [...currentUserInfo.memesUploaded, memeCreated._id],
     });
-    console.log(memeCreated);
+    // console.log(memeCreated);
     res.render("user/upload-meme", { memeCreated });
   }
 );

@@ -1,3 +1,6 @@
+<h2 class="main-h2">SIGN UP</h2>
+
+<div class="upload-meme-main">
 <form action="/auth/signup" method="POST">
    <label for="username"> Username
       <input type="text" id="username" name="username" placeholder="Your username" value="{{username}}">
@@ -23,6 +26,7 @@
 
    <button type="submit">Create User</button>
 </form>
+</div>
 
 {{#if errorMessage}}
    {{errorMessage}}
