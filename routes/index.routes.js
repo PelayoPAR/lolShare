@@ -9,7 +9,7 @@ const RedditImageFetcher = require("reddit-image-fetcher");
 router.get("/", (req, res, next) => {
   RedditImageFetcher.fetch({
     type: "custom",
-    total: 20,
+    total: 40,
     addSubreddit: ["memes", "funny", "dankmemes"],
     removeSubreddit: [],
   })
