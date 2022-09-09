@@ -23,7 +23,7 @@ router.post(
     // console.log(req.file);
     // console.log(req.body);
     // console.log("URL", req.file.path);
-    console.log("Title", req.body.memeTitle);
+    // console.log("Title", req.body.memeTitle);
     const memeCreated = await Meme.create({
       title: req.body.memeTitle,
       image: req.file.path,
